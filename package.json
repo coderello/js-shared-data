@@ -1,0 +1,36 @@
+{
+  "name": "js-shared-data",
+  "version": "0.1.0",
+  "description": "An easy way to work with the shared data (\"coderello/laravel-shared-data\").",
+  "main": "dist/index.js",
+  "files": [
+    "/src",
+    "/dist"
+  ],
+  "scripts": {
+    "build": "rm -rf dist/* && babel src -d dist",
+    "prepare": "jest && npm run format && npm run build",
+    "test": "jest --watchAll --coverage",
+    "format": "prettier --write \"**/*.{css,js,vue}\""
+  },
+  "keywords": [
+    "js",
+    "shared",
+    "data",
+    "laravel",
+    "coderello"
+  ],
+  "author": "Ilya Sakovich",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@types/jest": "^24.0.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "jest": "^24.1.0",
+    "prettier": "^1.16.4"
+  }
+}
