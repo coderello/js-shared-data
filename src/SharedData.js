@@ -1,26 +1,25 @@
+import get from 'lodash/get';
+
 export default class SharedData {
-    static namespace(namespace) {
+    constructor() {
+        this.setNamespace('sharedData');
+        this.setDefaultValue(null);
+        this.setSource(window);
+    }
+
+    setSource(source) {
+        this._source = source;
+    }
+
+    setNamespace(namespace) {
         this._namespace = namespace;
     }
 
-    static get(path, defaultValue = null) {
-        const parts = path.split('.');
-        parts.unshift(this._namespace || 'sharedData');
+    setDefaultValue(defaultValue) {
+        this._defaultValue = defaultValue;
+    }
 
-        let current = window;
-
-        for (let part of parts) {
-            try {
-                current = current[part];
-
-                if (current === null || current === undefined) {
-                    return defaultValue;
-                }
-            } catch (e) {
-                return defaultValue;
-            }
-        }
-
-        return current;
+    get(path, defaultValue = this._defaultValue) {
+        return get(this._source, `${this._namespace}.${path}`, defaultValue);
     }
 }

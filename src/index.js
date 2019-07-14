@@ -1,4 +1,18 @@
-import shared from './shared';
 import SharedData from './SharedData';
 
-export { shared, SharedData };
+const sharedData = new SharedData;
+
+const shared = sharedData.get;
+
+const setNamespace = sharedData.setNamespace;
+
+const setSource = sharedData.setSource;
+
+const setDefaultValue = sharedData.setDefaultValue;
+
+export {
+    shared,
+    setNamespace,
+    setSource,
+    setDefaultValue,
+};

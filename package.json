@@ -31,6 +31,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "jest": "^24.1.0",
+    "lodash": "^4.17.14",
     "prettier": "^1.16.4"
   }
 }
