@@ -1,25 +1,33 @@
 import get from 'lodash/get';
 
-export default class SharedData {
-    constructor() {
-        this.setNamespace('sharedData');
-        this.setDefaultValue(null);
-        this.setSource(window);
-    }
-
+class SharedData {
     setSource(source) {
         this._source = source;
+    }
+
+    getSource() {
+        return this.hasOwnProperty('_source') ? this._source : window;
     }
 
     setNamespace(namespace) {
         this._namespace = namespace;
     }
 
+    getNamespace() {
+        return this.hasOwnProperty('_namespace') ? this._namespace : 'sharedData';
+    }
+
     setDefaultValue(defaultValue) {
         this._defaultValue = defaultValue;
     }
 
-    get(path, defaultValue = this._defaultValue) {
-        return get(this._source, `${this._namespace}.${path}`, defaultValue);
+    getDefaultValue() {
+        return this.hasOwnProperty('_defaultValue') ? this._defaultValue : null;
+    }
+
+    get(path, defaultValue = this.getDefaultValue()) {
+        return get(this.getSource(), `${this.getNamespace()}.${path}`, defaultValue);
     }
 }
+
+export default SharedData;
