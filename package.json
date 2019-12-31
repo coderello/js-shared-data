@@ -1,6 +1,6 @@
 {
   "name": "js-shared-data",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "An easy way to work with the shared data delivered by \"coderello/laravel-shared-data\".",
   "main": "dist/index.js",
   "files": [
