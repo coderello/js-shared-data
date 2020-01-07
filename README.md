@@ -26,7 +26,7 @@ share([
 On the front-end side we can access this data using `shared()` helper.
 
 ```js
-import { shared } from 'js-shared-data';
+import shared from 'js-shared-data';
 
 // retrieve the user object
 const user = shared('user');
@@ -39,19 +39,4 @@ const balance = shared('balance');
 
 // specify the default value which will be used if value for specified path doesn't exist
 const status = shared('status', 'Working...');
-```
-
-## Customization
-
-```js
-import { sharedData } from 'js-shared-data';
-
-// specify the default value globally
-sharedData.setDefaultValue(null);
-
-// specify the namespace which contains an object with all shared data
-sharedData.setNamespace('App');
-
-// specify the source
-sharedData.setSource(window);
 ```
